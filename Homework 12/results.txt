@@ -1,0 +1,61 @@
+Test Results:
+
+--- 1. GET All Students (Initial) ---
+Status: 200
+Response: []
+
+
+--- 2. POST Create Vasyl ---
+Status: 201
+Response: {"age":29,"first_name":"Vasyl","id":1,"last_name":"Klymchuk"}
+
+
+--- 2. POST Create Petro ---
+Status: 201
+Response: {"age":60,"first_name":"Petro","id":2,"last_name":"Poroshenko"}
+
+
+--- 2. POST Create Volodymyr ---
+Status: 201
+Response: {"age":47,"first_name":"Volodymyr","id":3,"last_name":"Zelenskiy"}
+
+
+--- 3. GET All Students (After Create) ---
+Status: 200
+Response: [{"age":"29","first_name":"Vasyl","id":"1","last_name":"Klymchuk"},{"age":"60","first_name":"Petro","id":"2","last_name":"Poroshenko"},{"age":"47","first_name":"Volodymyr","id":"3","last_name":"Zelenskiy"}]
+
+
+--- 4. PATCH Student 2 Age ---
+Status: 200
+Response: {"age":25,"first_name":"Petro","id":"2","last_name":"Poroshenko"}
+
+
+--- 5. GET Student 2 ---
+Status: 200
+Response: {"age":"25","first_name":"Petro","id":"2","last_name":"Poroshenko"}
+
+
+--- 6. PUT Student 3 Full Update ---
+Status: 200
+Response: {"age":87,"first_name":"Leonid","id":"3","last_name":"Kuchma"}
+
+
+--- 7. GET Student 3 ---
+Status: 200
+Response: {"age":"87","first_name":"Leonid","id":"3","last_name":"Kuchma"}
+
+
+--- 8. GET All Students ---
+Status: 200
+Response: [{"age":"29","first_name":"Vasyl","id":"1","last_name":"Klymchuk"},{"age":"25","first_name":"Petro","id":"2","last_name":"Poroshenko"},{"age":"87","first_name":"Leonid","id":"3","last_name":"Kuchma"}]
+
+
+--- 9. DELETE Student 1 ---
+Status: 200
+Response: {"message":"Deleted successfully"}
+
+
+--- 10. GET All Students (Final) ---
+Status: 200
+Response: [{"age":"25","first_name":"Petro","id":"2","last_name":"Poroshenko"},{"age":"87","first_name":"Leonid","id":"3","last_name":"Kuchma"}]
+
