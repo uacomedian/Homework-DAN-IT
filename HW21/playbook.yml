@@ -1,0 +1,33 @@
+---
+- name: Setup Docker and Nginx
+  hosts: webservers
+  become: yes
+  tasks:
+    - name: Update apt cache
+      apt:
+        update_cache: yes
+
+    - name: Install Docker
+      apt:
+        name: docker.io
+        state: present
+
+    - name: Install Docker Compose
+      get_url:
+        url: "https://github.com/docker/compose/releases/download/v2.24.1/docker-compose-linux-x86_64"
+        dest: /usr/local/bin/docker-compose
+        mode: '0755'
+
+    - name: Create docker-compose.yml
+      copy:
+        content: |
+          version: '3'
+          services:
+            nginx:
+              image: nginx:latest
+              ports:
+                - "80:80"
+        dest: /home/ubuntu/docker-compose.yml
+
+    - name: Start Nginx via Compose
+      shell: /usr/local/bin/docker-compose -f /home/ubuntu/docker-compose.yml up -d
