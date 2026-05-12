@@ -1,0 +1,9 @@
+groups:
+  - name: hw_alerts
+    rules:
+      - alert: TargetDown
+        expr: up == 0
+        for: 1m
+        annotations:
+          summary: "Target {{ $labels.instance }} is down"
+          description: "Instance {{ $labels.instance }} of job {{ $labels.job }} has been down for more than 1 minute."
