@@ -10,7 +10,7 @@ def index():
     pod_name = os.environ.get("POD_NAME", "unknown")
     return jsonify({
         "status": "ok",
-        "message": "Hello Final Project!",
+        "message": "Hello Final Project v2!",
         "pod_ip": pod_ip,
         "pod_name": pod_name
     }), 200
