@@ -1,9 +1,9 @@
-resource "aws_eks_cluster" "danit" {
+resource "aws_eks_cluster" "vasylkly" {
   name     = var.name
   role_arn = aws_iam_role.cluster.arn
 
   vpc_config {
-    security_group_ids = [aws_security_group.danit-cluster.id]
+    security_group_ids = [aws_security_group.vasylkly-cluster.id]
     subnet_ids         = var.subnets_ids
   }
 
@@ -17,8 +17,8 @@ resource "aws_eks_cluster" "danit" {
   )
 }
 
-data "aws_eks_cluster_auth" "danit" {
-  name = aws_eks_cluster.danit.name
+data "aws_eks_cluster_auth" "vasylkly" {
+  name = aws_eks_cluster.vasylkly.name
 }
 
 resource "aws_eks_addon" "coredns" {
@@ -27,5 +27,5 @@ resource "aws_eks_addon" "coredns" {
   addon_version               = "v1.12.4-eksbuild.1"
   resolve_conflicts_on_create = "OVERWRITE"
 
-  depends_on = [aws_eks_node_group.danit]
+  depends_on = [aws_eks_node_group.vasylkly]
 }

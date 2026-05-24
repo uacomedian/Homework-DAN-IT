@@ -1,8 +1,8 @@
-resource "aws_eks_node_group" "danit" {
-  cluster_name    = aws_eks_cluster.danit.name
+resource "aws_eks_node_group" "vasylkly" {
+  cluster_name    = aws_eks_cluster.vasylkly.name
   node_group_name = var.name
-  node_role_arn   = aws_iam_role.danit-node.arn
-  subnet_ids = var.subnets_ids
+  node_role_arn   = aws_iam_role.vasylkly-node.arn
+  subnet_ids      = var.subnets_ids
 
   scaling_config {
     desired_size = 1
