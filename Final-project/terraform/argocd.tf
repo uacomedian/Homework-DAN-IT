@@ -7,6 +7,10 @@ resource "helm_release" "argocd" {
   create_namespace = true
 
   set {
+    name  = "server.extraArgs[0]"
+    value = "--insecure"
+  }
+  set {
     name  = "server.ingress.enabled"
     value = "true"
   }
@@ -19,15 +23,13 @@ resource "helm_release" "argocd" {
     value = "argocd.vasylkly.devops12.test-danit.com"
   }
   set {
-    name  = "server.ingress.tls"
+    name  = "server.ingress.annotations.nginx\\.ingress\\.kubernetes\\.io/ssl-passthrough"
     value = "true"
   }
   set {
-    name  = "server.extraArgs[0]"
-    value = "--insecure"
+    name  = "server.ingress.annotations.nginx\\.ingress\\.kubernetes\\.io/backend-protocol"
+    value = "HTTP"
   }
 
-  depends_on = [
-    helm_release.nginx_ingress
-  ]
+  depends_on = [helm_release.nginx_ingress]
 }
