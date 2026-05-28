@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: devops-app
-          image: uacomedian/devops-app:9ded743c30173c4f3b30759d1d89413d0a562164
+          image: uacomedian/devops-app:c7f1f46ee310faeb16b222fe342919882834bc68
           ports:
             - containerPort: 8080
           env:
